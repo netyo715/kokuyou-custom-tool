@@ -22,7 +22,7 @@ export function Settings() {
       description: "保存が完了しました",
       status: "success",
       placement: "top-right",
-    })
+    });
   };
 
   const resetAllLocalStrage = () => {
@@ -36,7 +36,7 @@ export function Settings() {
           <Heading>データ取得URL</Heading>
           <HStack>
             <Input placeholder="データ取得URL" value={dataURLInput} onChange={(e) => setDataURLInput(e.target.value)} />
-            <Button onClick={onSaveDataURL}>保存</Button>
+            <Button onClick={onSaveDataURL}>保存して更新</Button>
           </HStack>
         </VStack>
         <VStack>
