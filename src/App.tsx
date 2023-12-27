@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Stack, Tab, TabPanel, Tabs, UIProvider } from '@yamada-ui/react';
+import { Settings } from './features/Settings/Settings';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UIProvider>
+      <main>
+        <Tabs defaultIndex={localStorage.getItem("dataURL") ? 0 : 2}>
+          <Tab>対戦履歴</Tab>
+          <Tab>レーティング</Tab>
+          <Tab>設定</Tab>
+          <TabPanel></TabPanel>
+          <TabPanel></TabPanel>
+          <TabPanel>
+            <Settings/>
+          </TabPanel>
+        </Tabs>
+      </main>
+    </UIProvider>
   );
 }
 
