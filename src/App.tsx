@@ -1,6 +1,5 @@
-import './App.css';
-import { Stack, Tab, TabPanel, Tabs, UIProvider } from '@yamada-ui/react';
-import { Settings } from './features/Settings/Settings';
+import { Tab, TabPanel, Tabs, UIProvider } from '@yamada-ui/react';
+import { Settings } from './features/settings/Settings';
 
 function App() {
   return (
