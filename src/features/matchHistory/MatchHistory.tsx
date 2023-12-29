@@ -8,8 +8,8 @@ interface MatchHistoryProps {
 export function MatchHistory({matches}: MatchHistoryProps) {
   return (
     <VStack>
-      {matches.map(match => {
-        return <MatchCard match={match}/>
+      {matches.map((match, index) => {
+        return <MatchCard key={`match${index}`} match={match}/>
       })}
     </VStack>
   )
@@ -31,7 +31,7 @@ function MatchCard({match}: MatchCardProps){
         <Container py="1" px="2" gap="0" bg={match.winners==="Blue"?"yellow.50":""}>
           {match.blue.players.map((name, index) => {
             return (
-              <HStack>
+              <HStack key={`blue${index}`}>
                 <Text fontSize="sm" w="2xs" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{name}</Text>
                 <Text fontSize="sm" w="4xs" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{match.blue.champions[index]}</Text>  
               </HStack>
@@ -42,7 +42,7 @@ function MatchCard({match}: MatchCardProps){
         <Container py="1" px="2" gap="0" bg={match.winners==="Red"?"yellow.50":""}>
           {match.red.players.map((name, index) => {
             return (
-              <HStack>
+              <HStack key={`red${index}`}>
                 <Text fontSize="sm" w="3xs" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{name}</Text>
                 <Text fontSize="sm" w="4xs" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{match.red.champions[index]}</Text>  
               </HStack>

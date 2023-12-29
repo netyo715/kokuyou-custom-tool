@@ -6,13 +6,14 @@ import { Match } from "../../types/match";
 import { MatchHistory } from "../matchHistory/MatchHistory";
 import { Player } from "../../types/player";
 import { RatingInfo } from "../ratingInfo/RatingInfo";
+import { calculateRating } from "../../utils/rating";
 
 export function Contents() {
   const [dataURL] = useLocalStorage<string>({
     key: "dataURL",
   });
   const [matches, setMatches] = useState<Match[]>([]);
-  const [player, setPlayer] = useState<Player[]>([]);
+  const [players, setPlayers] = useState<Player[]>([]);
   const [isEndInitialize, setIsEndInitialize] = useState<Boolean>(false);
   const [isLoadMatchSuccess, setIsLoadMatchSuccess] = useState<Boolean>(false);
   const [tabIndex, setTabIndex] = useState<number>(2);
@@ -85,7 +86,15 @@ export function Contents() {
         } as Match;
       });
       setMatches(matchData);
+      setPlayers(calculateRating(matchData));
     }catch{
+      setTabIndex(2);
+      notice({
+        title: "データ取得",
+        description: "試合データの処理に失敗しました",
+        status: "warning",
+        placement: "top-right",
+      });
       return false;
     }
     return true;
@@ -105,7 +114,7 @@ export function Contents() {
               <MatchHistory matches={matches}/>
             </TabPanel>
             <TabPanel>
-              <RatingInfo />
+              <RatingInfo players={players}/>
             </TabPanel>
             <TabPanel>
               <Settings/>
