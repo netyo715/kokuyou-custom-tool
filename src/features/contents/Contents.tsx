@@ -1,10 +1,11 @@
-import { Center, Container, Tab, TabPanel, Tabs, useLoading, useLocalStorage, useNotice } from "@yamada-ui/react";
+import { Center, Container, Tab, TabList, TabPanel, TabPanels, Tabs, useLoading, useLocalStorage, useNotice } from "@yamada-ui/react";
 import axios from "axios";
 import { Settings } from "../settings/Settings";
 import { useEffect, useState } from "react";
 import { Match } from "../../types/match";
 import { MatchHistory } from "../matchHistory/MatchHistory";
 import { Player } from "../../types/player";
+import { RatingInfo } from "../ratingInfo/RatingInfo";
 
 export function Contents() {
   const [dataURL] = useLocalStorage<string>({
@@ -93,17 +94,23 @@ export function Contents() {
   return (
     <Center bg="neutral.50" h="100vh">
       <Container bg="white" p="0" h="full" w="full" maxW="1080px">
-        <Tabs index={tabIndex} onChange={setTabIndex}>
-          <Tab isDisabled={!isLoadMatchSuccess} >対戦履歴</Tab>
-          <Tab isDisabled={!isLoadMatchSuccess} >レーティング</Tab>
-          <Tab>設定</Tab>
-          <TabPanel>
-            <MatchHistory matches={matches}/>
-          </TabPanel>
-          <TabPanel></TabPanel>
-          <TabPanel>
-            <Settings/>
-          </TabPanel>
+        <Tabs h="full" index={tabIndex} onChange={setTabIndex}>
+          <TabList h="41px">
+            <Tab isDisabled={!isLoadMatchSuccess} >対戦履歴</Tab>
+            <Tab isDisabled={!isLoadMatchSuccess} >レーティング</Tab>
+            <Tab>設定</Tab>
+          </TabList>
+          <TabPanels h="calc(100% - 41px)">
+            <TabPanel>
+              <MatchHistory matches={matches}/>
+            </TabPanel>
+            <TabPanel>
+              <RatingInfo />
+            </TabPanel>
+            <TabPanel>
+              <Settings/>
+            </TabPanel>
+          </TabPanels>
         </Tabs>
       </Container>
     </Center>
