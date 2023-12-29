@@ -1,5 +1,4 @@
-import { Tab, TabPanel, Tabs, UIProvider } from '@yamada-ui/react';
-import { Settings } from './features/settings/Settings';
+import { UIProvider } from '@yamada-ui/react';
 import { Contents } from './features/contents/Contents';
 
 function App() {

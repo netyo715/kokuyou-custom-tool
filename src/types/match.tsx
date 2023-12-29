@@ -2,7 +2,13 @@ import { ChampionName } from "../data/champion";
 
 export type Match = {
   date: Date;
-  players: string[][];
-  champions: ChampionName[][];
+  blue: {
+    players: string[],
+    champions: ChampionName[],
+  };
+  red: {
+    players: string[],
+    champions: ChampionName[],
+  };
   winners: "Blue"|"Red"
 }
