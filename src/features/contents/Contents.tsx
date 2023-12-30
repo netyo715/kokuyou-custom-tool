@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Match } from "../../types/match";
 import { MatchHistory } from "../matchHistory/MatchHistory";
 import { Player } from "../../types/player";
-import { RatingInfo } from "../ratingInfo/RatingInfo";
+import { PlayerInfo } from "../playerInfo/PlayerInfo";
 import { calculateRating } from "../../utils/rating";
 
 export function Contents() {
@@ -63,7 +63,7 @@ export function Contents() {
     });
 
     try{
-      const matchData = data.map((row) => {
+      const matchData = data.map((row, index) => {
         return {
           date: new Date(row[0]),
           blue: {
@@ -109,12 +109,12 @@ export function Contents() {
             <Tab isDisabled={!isLoadMatchSuccess} >レーティング</Tab>
             <Tab>設定</Tab>
           </TabList>
-          <TabPanels h="calc(100% - 41px)">
+          <TabPanels h="calc(100% - 41px)" overflowY="scroll">
             <TabPanel>
               <MatchHistory matches={matches}/>
             </TabPanel>
             <TabPanel>
-              <RatingInfo players={players}/>
+              <PlayerInfo players={players}/>
             </TabPanel>
             <TabPanel>
               <Settings/>

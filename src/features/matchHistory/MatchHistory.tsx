@@ -38,7 +38,7 @@ function MatchCard({match}: MatchCardProps){
             );
           })}
         </Container>
-        <Divider orientation="vertical" variant="dashed" />
+        <Divider orientation="vertical" variant="dashed"/>
         <Container py="1" px="2" gap="0" bg={match.winners==="Red"?"yellow.50":""}>
           {match.red.players.map((name, index) => {
             return (

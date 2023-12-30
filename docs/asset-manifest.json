@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/kokuyou-custom-tool/static/js/main.c3e207be.js",
+    "main.js": "/kokuyou-custom-tool/static/js/main.18131a8c.js",
     "static/js/787.471bfad9.chunk.js": "/kokuyou-custom-tool/static/js/787.471bfad9.chunk.js",
     "index.html": "/kokuyou-custom-tool/index.html",
-    "main.c3e207be.js.map": "/kokuyou-custom-tool/static/js/main.c3e207be.js.map",
+    "main.18131a8c.js.map": "/kokuyou-custom-tool/static/js/main.18131a8c.js.map",
     "787.471bfad9.chunk.js.map": "/kokuyou-custom-tool/static/js/787.471bfad9.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.c3e207be.js"
+    "static/js/main.18131a8c.js"
   ]
 }
