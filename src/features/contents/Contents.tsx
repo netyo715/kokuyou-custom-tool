@@ -102,7 +102,7 @@ export function Contents() {
   };
 
   return (
-    <Center bg="neutral.50" h="100vh">
+    <Center bg="neutral.50" h="100dvh">
       <Container bg="white" p="0" h="full" w="full" maxW="1080px">
         <Tabs h="full" index={tabIndex} onChange={setTabIndex}>
           <TabList h="41px">
