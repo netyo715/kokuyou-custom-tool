@@ -7,6 +7,7 @@ import { MatchHistory } from "../matchHistory/MatchHistory";
 import { Player } from "../../types/player";
 import { PlayerInfo } from "../playerInfo/PlayerInfo";
 import { calculateRating } from "../../utils/rating";
+import { TeamBuilder } from "../teamBuilder/TeamBuilder";
 
 export function Contents() {
   const [dataURL] = useLocalStorage<string>({
@@ -106,7 +107,8 @@ export function Contents() {
         <Tabs h="full" index={tabIndex} onChange={setTabIndex}>
           <TabList h="41px">
             <Tab isDisabled={!isLoadMatchSuccess} >対戦履歴</Tab>
-            <Tab isDisabled={!isLoadMatchSuccess} >レーティング</Tab>
+            <Tab isDisabled={!isLoadMatchSuccess} >プレイヤー</Tab>
+            <Tab isDisabled={!isLoadMatchSuccess} >チーム分け</Tab>
             <Tab>設定</Tab>
           </TabList>
           <TabPanels h="calc(100% - 41px)" overflowY="scroll">
@@ -115,6 +117,9 @@ export function Contents() {
             </TabPanel>
             <TabPanel>
               <PlayerInfo players={players}/>
+            </TabPanel>
+            <TabPanel>
+              <TeamBuilder players={players}/>
             </TabPanel>
             <TabPanel>
               <Settings/>

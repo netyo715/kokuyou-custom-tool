@@ -36,7 +36,7 @@ export function Settings() {
           <Heading>データ取得URL</Heading>
           <HStack>
             <Input placeholder="データ取得URL" value={dataURLInput} onChange={(e) => setDataURLInput(e.target.value)} />
-            <Button onClick={onSaveDataURL}>保存して更新</Button>
+            <Button onClick={onSaveDataURL} colorScheme="primary">保存して更新</Button>
           </HStack>
         </VStack>
         <VStack>

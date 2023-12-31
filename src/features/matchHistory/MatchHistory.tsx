@@ -1,4 +1,4 @@
-import { Card, Container, Divider, Flex, HStack, Text, VStack, useBreakpoint } from "@yamada-ui/react";
+import { Card, Container, Divider, Flex, HStack, Heading, Text, VStack, useBreakpoint } from "@yamada-ui/react";
 import { Match } from "../../types/match";
 
 interface MatchHistoryProps {
@@ -8,6 +8,9 @@ interface MatchHistoryProps {
 export function MatchHistory({matches}: MatchHistoryProps) {
   return (
     <VStack>
+      <Heading>
+        対戦履歴
+      </Heading>
       {matches.map((match, index) => {
         return <MatchCard key={`match${index}`} match={match}/>
       })}
