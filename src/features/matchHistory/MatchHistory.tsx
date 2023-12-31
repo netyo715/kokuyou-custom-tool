@@ -1,4 +1,4 @@
-import { Card, Container, Divider, Flex, HStack, Text, VStack } from "@yamada-ui/react";
+import { Card, Container, Divider, Flex, HStack, Text, VStack, useBreakpoint } from "@yamada-ui/react";
 import { Match } from "../../types/match";
 
 interface MatchHistoryProps {
@@ -20,11 +20,12 @@ interface MatchCardProps {
 }
 
 function MatchCard({match}: MatchCardProps){
+  const breakpoint = useBreakpoint();
   return (
     <Card>
       <Flex h="113">
         <Container p="0" w="5xs" bg={match.winners==="Blue"?"blue.200":"red.200"}/>
-        <Container>
+        <Container px="md" w="3xs" >
           {match.date.getMonth()+1 + "/" + match.date.getDate()}
         </Container>
         <Divider orientation="vertical" variant="solid" />
@@ -33,7 +34,10 @@ function MatchCard({match}: MatchCardProps){
             return (
               <HStack key={`blue${index}`}>
                 <Text fontSize="sm" w="2xs" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{name}</Text>
-                <Text fontSize="sm" w="4xs" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{match.blue.champions[index]}</Text>  
+                {breakpoint!=="sm"&&breakpoint!=="md"
+                  ?<Text fontSize="sm" w="4xs" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{match.blue.champions[index]}</Text>  
+                  :""
+                }
               </HStack>
             );
           })}
@@ -44,7 +48,10 @@ function MatchCard({match}: MatchCardProps){
             return (
               <HStack key={`red${index}`}>
                 <Text fontSize="sm" w="3xs" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{name}</Text>
-                <Text fontSize="sm" w="4xs" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{match.red.champions[index]}</Text>  
+                {breakpoint!=="sm"&&breakpoint!=="md"
+                  ?<Text fontSize="sm" w="4xs" overflow="hidden" textOverflow="ellipsis" whiteSpace="nowrap">{match.red.champions[index]}</Text>  
+                  :""
+                }
               </HStack>
             );
           })}
